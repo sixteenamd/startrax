@@ -259,8 +259,9 @@ body {
 
 .progress-fill {
   height: 100%;
-  width: 40%;
+  width: 0%;
   background: #ff4fd8;
+  transition: width 0.1s linear;
 }
 
 .read-more {
@@ -309,6 +310,16 @@ body {
 @keyframes marquee {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
+}
+
+.tag.tag-song {
+  background: #7cfc00;
+}
+
+.is-paused .disc,
+.is-paused .eq span,
+.is-paused .marquee span {
+  animation-play-state: paused;
 }
 
 @media (prefers-reduced-motion: reduce) {
