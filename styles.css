@@ -1,0 +1,107 @@
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Nunito", sans-serif;
+  color: #e8e8ff;
+  background-color: #0b0b2e;
+  background-image:
+    radial-gradient(#ffffff 1px, transparent 1.5px),
+    radial-gradient(#ff8ae6 1px, transparent 1.5px);
+  background-size: 64px 64px, 96px 96px;
+  background-position: 0 0, 30px 40px;
+}
+
+.site-header {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 32px 24px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.logo {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  line-height: 1;
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 22px;
+  font-family: "VT323", monospace;
+  font-size: 24px;
+}
+
+.site-nav a {
+  color: #5ff3ff;
+  text-decoration: none;
+}
+
+.site-nav a:hover {
+  color: #ffffff;
+}
+.logo-star {
+  font-family: "Orbitron", sans-serif;
+  font-weight: 800;
+  font-size: clamp(40px, 6vw, 66px);
+  background: linear-gradient(90deg, #8d89ab 0%, #ffffff 20%, #bdb9d6 35%, #f4f2ff 50%, #8d89ab 65%, #ffffff 80%, #8d89ab 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shine 6s linear infinite;
+}
+
+@keyframes shine {
+  from { background-position: 0% 0; }
+  to   { background-position: 200% 0; }
+}
+.logo-spark {
+  font-size: 36px;
+  color: #ffd84f;
+}
+
+.logo-trax {
+  font-family: "VT323", monospace;
+  font-size: clamp(58px, 8vw, 92px);
+  color: #ff4fd8;
+  animation: flicker 1.8s linear both, glow 2.6s ease-in-out 1.8s infinite alternate;
+}
+
+@keyframes flicker {
+  0%       { opacity: 0; }
+  8%       { opacity: 0.9; }
+  12%      { opacity: 0.15; }
+  18%      { opacity: 1; }
+  24%      { opacity: 0.35; }
+  32%, 100% { opacity: 1; }
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 6px #a3268c; }
+  to   { text-shadow: 0 0 18px #ff4fd8, 0 0 34px #a3268c; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-star, .logo-trax { animation: none; }
+}
+.logo-spark {
+  display: inline-block;
+  font-size: 36px;
+  color: #ffd84f;
+  animation: twinkle 2.4s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { transform: scale(0.6) rotate(0deg);  opacity: 0.4; }
+  50%      { transform: scale(1.1) rotate(45deg); opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .logo-star, .logo-trax, .logo-spark { animation: none; }
+}
