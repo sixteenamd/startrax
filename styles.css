@@ -46,6 +46,7 @@ body {
 .site-nav a:hover {
   color: #ffffff;
 }
+
 .logo-star {
   font-family: "Orbitron", sans-serif;
   font-weight: 800;
@@ -58,13 +59,11 @@ body {
   animation: shine 6s linear infinite;
 }
 
-@keyframes shine {
-  from { background-position: 0% 0; }
-  to   { background-position: 200% 0; }
-}
 .logo-spark {
+  display: inline-block;
   font-size: 36px;
   color: #ffd84f;
+  animation: twinkle 2.4s ease-in-out infinite;
 }
 
 .logo-trax {
@@ -74,34 +73,245 @@ body {
   animation: flicker 1.8s linear both, glow 2.6s ease-in-out 1.8s infinite alternate;
 }
 
-@keyframes flicker {
-  0%       { opacity: 0; }
-  8%       { opacity: 0.9; }
-  12%      { opacity: 0.15; }
-  18%      { opacity: 1; }
-  24%      { opacity: 0.35; }
-  32%, 100% { opacity: 1; }
-}
-
-@keyframes glow {
-  from { text-shadow: 0 0 6px #a3268c; }
-  to   { text-shadow: 0 0 18px #ff4fd8, 0 0 34px #a3268c; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .logo-star, .logo-trax { animation: none; }
-}
-.logo-spark {
-  display: inline-block;
-  font-size: 36px;
-  color: #ffd84f;
-  animation: twinkle 2.4s ease-in-out infinite;
+@keyframes shine {
+  from { background-position: 0% 0; }
+  to   { background-position: 200% 0; }
 }
 
 @keyframes twinkle {
   0%, 100% { transform: scale(0.6) rotate(0deg);  opacity: 0.4; }
   50%      { transform: scale(1.1) rotate(45deg); opacity: 1; }
 }
+
+@keyframes flicker {
+  0%        { opacity: 0; }
+  8%        { opacity: 0.9; }
+  12%       { opacity: 0.15; }
+  18%       { opacity: 1; }
+  24%       { opacity: 0.35; }
+  32%, 100% { opacity: 1; }
+}
+
+.page {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 24px 48px;
+}
+
+.tagline {
+  margin: 0 0 14px;
+  font-family: "VT323", monospace;
+  font-size: 26px;
+  color: #ffd84f;
+}
+
+.player-frame {
+  padding: 10px;
+  border-radius: 26px;
+  background: linear-gradient(180deg, #f4f3fa 0%, #c9c7d8 48%, #a6a3bb 52%, #e2e1ec 100%);
+  border: 1px solid #ffffff;
+}
+
+.player-screen {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 28px;
+  padding: 24px 28px;
+  border-radius: 18px;
+  background: #0a1a1f;
+  border: 2px inset #6a8f99;
+}
+
+/* ----- for the cover and spinning disc ----- */
+.cover-stack {
+  position: relative;
+  flex: 0 0 auto;
+  width: 260px;
+  height: 200px;
+}
+
+.cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 200px;
+  box-sizing: border-box;
+  border-radius: 6px;
+  border: 3px solid #e4e2f2;
+  background: conic-gradient(from 200deg, #f6c8e8, #c9d6ff, #b8f0e6, #fff2c4, #e6c9ff, #f6c8e8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #2b1d55;
+}
+
+.disc {
+  position: absolute;
+  top: 10px;
+  left: 80px;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: repeating-radial-gradient(circle, #1a1a2e 0px, #1a1a2e 3px, #26264a 4px, #1a1a2e 5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: spin 5s linear infinite;
+}
+
+.disc-label {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, #0a1a1f 6px, transparent 7px),
+    conic-gradient(from 200deg, #f6c8e8, #c9d6ff, #b8f0e6, #fff2c4, #e6c9ff, #f6c8e8);
+}
+
+/* ------ info, equalizer, and the play button ----- */
+.np-info {
+  flex: 1 1 300px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-family: "VT323", monospace;
+  color: #5ff3ff;
+}
+
+.np-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.tag {
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 20px;
+  color: #0a1a1f;
+  background: #c9b8ff;
+}
+
+.np-label {
+  font-size: 22px;
+  color: #7cfc00;
+}
+
+.eq {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 22px;
+}
+
+.eq span {
+  width: 5px;
+  height: 4px;
+  background: #7cfc00;
+  animation: eq 0.8s ease-in-out infinite alternate;
+}
+
+.eq span:nth-child(2) { animation-delay: 0.25s; }
+.eq span:nth-child(3) { animation-delay: 0.5s; }
+.eq span:nth-child(4) { animation-delay: 0.15s; }
+.eq span:nth-child(5) { animation-delay: 0.4s; }
+
+.np-title {
+  margin: 0;
+  font-weight: 400;
+  font-size: clamp(40px, 6vw, 54px);
+  line-height: 1;
+  color: #ffffff;
+}
+
+.np-byline {
+  margin: 0;
+  font-size: 26px;
+}
+
+.stars {
+  color: #ffd84f;
+}
+
+.marquee {
+  overflow: hidden;
+  font-size: 22px;
+  color: #9fd8e0;
+}
+
+.marquee span {
+  display: inline-block;
+  white-space: pre;
+  animation: marquee 14s linear infinite;
+}
+
+.progress {
+  height: 6px;
+  border-radius: 3px;
+  background: #1f3a42;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 40%;
+  background: #ff4fd8;
+}
+
+.read-more {
+  align-self: flex-start;
+  margin-top: 8px;
+  font-size: 24px;
+  color: #5ff3ff;
+}
+
+.read-more:hover {
+  color: #ffffff;
+}
+
+.play-btn {
+  flex: 0 0 64px;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 1px solid #ffd0f4;
+  background: linear-gradient(180deg, #ff9be9 0%, #ff4fd8 50%, #d02bb0 51%, #ff7fe2 100%);
+  color: #ffffff;
+  font-size: 22px;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.play-btn:hover {
+  transform: scale(1.08);
+}
+
+/* ----- Keep these at the bottom of the file ----- */
+
+@keyframes glow {
+  from { text-shadow: 0 0 6px #a3268c; }
+  to   { text-shadow: 0 0 18px #ff4fd8, 0 0 34px #a3268c; }
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes eq {
+  from { height: 4px; }
+  to   { height: 22px; }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .logo-star, .logo-trax, .logo-spark { animation: none; }
+  .logo-star, .logo-trax, .logo-spark,
+  .disc, .eq span, .marquee span { animation: none; }
 }
