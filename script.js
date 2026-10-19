@@ -30,7 +30,7 @@ const reviews = [
     opening: "[Opening line of this album review]",
     cover: "conic-gradient(from 0deg, #5ff3ff, #1d6f8a, #b8f0e6, #e6fbff, #5ff3ff)"
   },
-{
+  {
     type: "song",
     title: "[Song title]",
     artist: "[Artist] · from [Album title]",
@@ -144,6 +144,8 @@ const upcoming = [
     cover: "linear-gradient(135deg, #3d2a05, #ffd84f)"
   }
 ];
+
+// Builds the HTML for one upcoming-album card
 function buildRadarCard(album, index) {
   return `
     <article class="radar-card" style="animation-delay: ${index * 0.1}s">
@@ -162,5 +164,7 @@ function buildRadarCard(album, index) {
     </article>
   `;
 }
+
+// Build every card and put them on the page
 const radarGrid = document.querySelector(".radar-grid");
 radarGrid.innerHTML = upcoming.map(buildRadarCard).join("");

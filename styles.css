@@ -11,6 +11,7 @@ body {
   background-position: 0 0, 30px 40px;
 }
 
+/* ---------- Header ---------- */
 .site-header {
   max-width: 1180px;
   margin: 0 auto;
@@ -51,12 +52,6 @@ body {
   font-family: "Orbitron", sans-serif;
   font-weight: 800;
   font-size: clamp(40px, 6vw, 66px);
-  background: linear-gradient(90deg, #8d89ab 0%, #ffffff 20%, #bdb9d6 35%, #f4f2ff 50%, #8d89ab 65%, #ffffff 80%, #8d89ab 100%);
-  background-size: 200% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: shine 6s linear infinite;
 }
 
 .logo-spark {
@@ -92,6 +87,7 @@ body {
   32%, 100% { opacity: 1; }
 }
 
+/* ---------- Page layout and Now playing ---------- */
 .page {
   max-width: 1180px;
   margin: 0 auto;
@@ -197,6 +193,11 @@ body {
   background: #c9b8ff;
 }
 
+/* song reviews get a green tag (added by script.js) */
+.tag.tag-song {
+  background: #7cfc00;
+}
+
 .np-label {
   font-size: 22px;
   color: #7cfc00;
@@ -291,10 +292,18 @@ body {
 .play-btn:hover {
   transform: scale(1.08);
 }
+
+/* freeze the player's animations when paused (class added by script.js) */
+.is-paused .disc,
+.is-paused .eq span,
+.is-paused .marquee span {
+  animation-play-state: paused;
+}
+
 /* ---------- Side A / Side B ---------- */
 .sides {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
   gap: 24px;
   margin-top: 56px;
 }
@@ -354,6 +363,7 @@ body {
   color: #5ff3ff;
 }
 
+/* reusable shining chrome text (logo and section titles) */
 .chrome-text {
   background: linear-gradient(90deg, #8d89ab 0%, #ffffff 20%, #bdb9d6 35%, #f4f2ff 50%, #8d89ab 65%, #ffffff 80%, #8d89ab 100%);
   background-size: 200% 100%;
@@ -362,6 +372,7 @@ body {
   color: transparent;
   animation: shine 6s linear infinite;
 }
+
 .cover-fan {
   position: relative;
   height: 150px;
@@ -559,7 +570,7 @@ body {
   animation: grow 1.6s ease both;
 }
 
-/* ----- Keep these at the bottom of the file ----- */
+/* ---------- Keyframes ---------- */
 @keyframes grow {
   from { width: 0; }
 }
@@ -573,6 +584,7 @@ body {
   from { text-shadow: 0 0 6px #a3268c; }
   to   { text-shadow: 0 0 18px #ff4fd8, 0 0 34px #a3268c; }
 }
+
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
@@ -587,16 +599,13 @@ body {
   to   { transform: translateX(-50%); }
 }
 
-.tag.tag-song {
-  background: #7cfc00;
+/* ---------- Phones ---------- */
+@media (max-width: 480px) {
+  .page { padding: 0 12px 40px; }
+  .player-screen { padding: 18px 16px; }
 }
 
-.is-paused .disc,
-.is-paused .eq span,
-.is-paused .marquee span {
-  animation-play-state: paused;
-}
-
+/* ---------- Reduced motion (keep this last) ---------- */
 @media (prefers-reduced-motion: reduce) {
   .logo-star, .logo-trax, .logo-spark, .chrome-text,
   .disc, .eq span, .marquee span,
