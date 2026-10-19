@@ -399,6 +399,10 @@ body {
   transform: rotate(-14deg) translateX(-8px);
 }
 
+.side-card:hover .fan-2 {
+  transform: translateX(-50%) translateY(-10px) rotate(3deg);
+}
+
 .side-card:hover .fan-3 {
   transform: rotate(15deg) translateX(8px);
 }
@@ -437,7 +441,133 @@ body {
 .thumb-2 { background: conic-gradient(from 150deg, #c9d6ff, #4b4b8f, #e4e2f2, #8d89ab, #c9d6ff); }
 .thumb-3 { background: conic-gradient(from 90deg, #ff4fd8, #7b5ed6, #ff9be9, #ffd0f4, #ff4fd8); }
 
+/* ---------- On my radar ---------- */
+.radar {
+  margin-top: 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.section-title {
+  margin: 0;
+  font-family: "VT323", monospace;
+  font-weight: 400;
+  font-size: 40px;
+  color: #ffffff;
+}
+
+.section-title .accent {
+  color: #ff4fd8;
+}
+
+.section-link {
+  font-family: "VT323", monospace;
+  font-size: 24px;
+  color: #5ff3ff;
+}
+
+.section-link:hover {
+  color: #ffffff;
+}
+
+.radar-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.radar-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 14px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid #4b4b8f;
+  animation: rise 0.6s ease both;
+}
+
+.radar-cover {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 6px;
+  border: 2px dashed #8f8fd9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #e8e8ff;
+}
+
+.radar-date {
+  position: absolute;
+  top: 10px;
+  right: -8px;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-family: "VT323", monospace;
+  font-size: 20px;
+  color: #ffffff;
+  background: #d02bb0;
+  transform: rotate(6deg);
+}
+
+.radar-title {
+  margin: 4px 0 0;
+  font-family: "VT323", monospace;
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 1;
+  color: #ffffff;
+}
+
+.radar-artist {
+  margin: 0;
+  font-size: 15px;
+  color: #c9c7e8;
+}
+
+.hype {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "VT323", monospace;
+  font-size: 20px;
+  color: #ffd84f;
+}
+
+.hype-track {
+  flex-grow: 1;
+  height: 8px;
+  border-radius: 4px;
+  background: #1f1f4a;
+  overflow: hidden;
+}
+
+.hype-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ffd84f, #ff4fd8);
+  animation: grow 1.6s ease both;
+}
+
 /* ----- Keep these at the bottom of the file ----- */
+@keyframes grow {
+  from { width: 0; }
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
 
 @keyframes glow {
   from { text-shadow: 0 0 6px #a3268c; }
@@ -469,5 +599,6 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .logo-star, .logo-trax, .logo-spark, .chrome-text,
-  .disc, .eq span, .marquee span { animation: none; }
+  .disc, .eq span, .marquee span,
+  .radar-card, .hype-fill { animation: none; }
 }

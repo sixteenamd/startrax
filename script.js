@@ -29,6 +29,14 @@ const reviews = [
     rating: 3,
     opening: "[Opening line of this album review]",
     cover: "conic-gradient(from 0deg, #5ff3ff, #1d6f8a, #b8f0e6, #e6fbff, #5ff3ff)"
+  },
+{
+    type: "song",
+    title: "[Song title]",
+    artist: "[Artist] · from [Album title]",
+    rating: 4,
+    opening: "[Opening line of this song review]",
+    cover: "conic-gradient(from 300deg, #ffd84f, #ff9b4f, #fff2c4, #ffe9a8, #ffd84f)"
   }
 ];
 
@@ -101,3 +109,58 @@ playBtn.addEventListener("click", function () {
 
 // ---------- Start ----------
 showReview(current);
+
+// =========================================
+// On my radar — upcoming albums
+// =========================================
+
+const upcoming = [
+  {
+    title: "[Album title]",
+    artist: "[Artist]",
+    releaseDate: "[release date]",
+    hype: 95,
+    cover: "linear-gradient(135deg, #2b1d55, #7b5ed6)"
+  },
+  {
+    title: "[Album title]",
+    artist: "[Artist]",
+    releaseDate: "[release date]",
+    hype: 80,
+    cover: "linear-gradient(135deg, #1d3a35, #5ff3ff)"
+  },
+  {
+    title: "[Album title]",
+    artist: "[Artist]",
+    releaseDate: "[release date]",
+    hype: 70,
+    cover: "linear-gradient(135deg, #4a1b3c, #ff4fd8)"
+  },
+  {
+    title: "[Album title]",
+    artist: "[Artist]",
+    releaseDate: "[release date]",
+    hype: 55,
+    cover: "linear-gradient(135deg, #3d2a05, #ffd84f)"
+  }
+];
+function buildRadarCard(album, index) {
+  return `
+    <article class="radar-card" style="animation-delay: ${index * 0.1}s">
+      <div class="radar-cover" style="background: ${album.cover}">
+        [cover art]
+        <span class="radar-date">${album.releaseDate}</span>
+      </div>
+      <h3 class="radar-title">${album.title}</h3>
+      <p class="radar-artist">${album.artist}</p>
+      <div class="hype">
+        <span>hype</span>
+        <div class="hype-track" role="img" aria-label="Hype level: ${album.hype} out of 100">
+          <div class="hype-fill" style="width: ${album.hype}%; animation-delay: ${0.4 + index * 0.15}s"></div>
+        </div>
+      </div>
+    </article>
+  `;
+}
+const radarGrid = document.querySelector(".radar-grid");
+radarGrid.innerHTML = upcoming.map(buildRadarCard).join("");
